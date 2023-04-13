@@ -6,16 +6,16 @@
 module ripplecarryadder(OV, s, a, b);
 
 	output OV;
-	output [7:0] s;
-	input [7:0] a, b;
+	output [3:0] s;
+	input [3:0] a, b;
 
 
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
 
-	wire [7:0] a, b, s;
-	wire [6:0] ci, c0;
+	wire [3:0] a, b, s;
+	wire [2:0] ci, c0;
 	wire OV;
 
 
@@ -29,14 +29,6 @@ module ripplecarryadder(OV, s, a, b);
 	assign ci[1] = c0[1];
 	fulladder FA3 (c0[2], s[2], a[2], b[2], ci[1]);
 	assign ci[2] = c0[2];
-	fulladder FA4 (c0[3], s[3], a[3], b[3], ci[2]);
-	assign ci[3] = c0[3];
-	fulladder FA5 (c0[4], s[4], a[4], b[4], ci[3]);
-	assign ci[4] = c0[4];
-	fulladder FA6 (c0[5], s[5], a[5], b[5], ci[4]);
-	assign ci[5] = c0[5];
-	fulladder FA7 (c0[6], s[6], a[6], b[6], ci[5]);
-	assign ci[6] = c0[6];
-	fulladder FA8 (OV, s[7], a[7], b[7], ci[6]);
+	fulladder FA4 (OV, s[3], a[3], b[3], ci[2]);
 
 endmodule
